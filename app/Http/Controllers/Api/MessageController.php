@@ -163,4 +163,13 @@ class MessageController extends Controller
     {
         return Message::where('chatroom_id', $id)->paginate(10);
     }
+
+    private function getFileUrl($path)
+    {
+        $relativePath = str_replace(public_path() . DIRECTORY_SEPARATOR, '', $path);
+
+        $relativePath = str_replace('\\', '/', $relativePath);
+
+        return url($relativePath);
+    }
 }
